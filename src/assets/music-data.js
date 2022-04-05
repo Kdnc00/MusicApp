@@ -1,54 +1,4 @@
-import React, {useState} from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
-import SearchBar from "./src/components/SearchBar/SearchBar";
-
-// import MusicsData from "./src/assets/music-data.js";
-import SongCard from "./src/components/SongCard";
-
-
-function App() {
-  const [list, setList]=useState(MusicsData);  // const renderSong = ({ item }) => <SongCard song={item} />;
-  const renderSeparator = () => <View style={styles.separator} />;
-  const handleSearch = text => {
-    const filteredList = MusicsData.filter(song => {
-      const searchedText = text.toLowerCase();
-      const currentTitle = song.title.toLowerCase();
-
-      return currentTitle.indexOf(searchedText) > -1;
-
-    });
-    setList(filteredList);
-  };
-
-  // const renderItem = ({ ...props }) => {
-  //   return <SongCard {...props} />;
-  // };
-
-  return (
-    <SafeAreaView style={styles.container}>
-      <SearchBar onSearch={handleSearch} />
-      <FlatList
-        data={list}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ ...props }) => <SongCard {...props} />}
-        ItemSeparatorComponent={renderSeparator}
-      />
-
-    </SafeAreaView>
-  );
-}
-export default App;
-const styles = StyleSheet.create({
-  container: { flex: 1 },
-  separator: {
-    borderWidth: 1,
-    borderColor: "gray",
-  },
-
-});
-
-
-const MusicsData = [
+const data = [
   {
     id: "0",
     title: "King Nothing",
@@ -199,3 +149,6 @@ const MusicsData = [
       "https://i.scdn.co/image/ab67616d0000b273379476dcb16633eb518e4aa4",
   },
 ];
+
+
+export default data;
